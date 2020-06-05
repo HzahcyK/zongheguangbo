@@ -14,7 +14,7 @@ for item in result:
     datas.append(item)
 print(datas)
 
-workbook = xlsxwriter.Workbook(zhgb.xlsx)
+workbook = xlsxwriter.Workbook('zhgb.xlsx')
 worksheet = workbook.add_worksheet()
 for i in range(1, len(datas)):
     for data in datas:
