@@ -30,12 +30,10 @@ id_style = workbook.add_format({
     'bold': 1,
     'align': 'center',
 })
-content_style = workbook.add_format({
-    'align': 'center',
-})
-title_style = workbook.add_format({
-    'align': 'left',
-})
+# content_style = workbook.add_format({
+#     'align': 'center',
+# })
+
 worksheet.set_column("A:A", None, id_style)
 worksheet.set_column("B:B", 21)
 worksheet.set_column("C:C", 70)
@@ -43,8 +41,6 @@ title = [u'id', u'发布时间', u'标题', u'是否原创', u'栏目', u'编辑
 worksheet.write_row('A1', title, colname_style)
 for i in range(2, len(datas)):
         row = 'A' + str(i)
-        worksheet.write_row(row, datas[i-2], content_style)
-        worksheet.set_column("A:A", None, id_style)
-        worksheet.set_column("C:C", None, title_style)
+        worksheet.write_row(row, datas[i-2])
 workbook.close()
 
