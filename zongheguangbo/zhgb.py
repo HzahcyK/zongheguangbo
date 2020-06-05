@@ -19,18 +19,22 @@ print(datas)
 
 workbook = xlsxwriter.Workbook(file_name + '.xlsx')
 worksheet = workbook.add_worksheet()
+align = workbook.add_format({'align': 'center'})
+bold = workbook.add_format({'bold': 1})
+worksheet.set_column("A:A", None, align, bold)
 worksheet.set_column("B:B", 21)
 worksheet.set_column("C:C", 70)
-bold = workbook.add_format({
+title_style = workbook.add_format({
     'bold': 1,             #字体加粗
-    'fg_color': 'green',   #单元格背景颜色
+    'fg_color': 'yellow',   #单元格背景颜色
     'align': 'center',     #对齐方式
     'valign': 'vcenter',   #字体对齐方式
  })
+
 title = [u'id', u'发布时间', u'标题', u'是否原创', u'栏目', u'编辑', u'阅读量', u'部门']
-worksheet.write_row('A1', title, bold)
+worksheet.write_row('A1', title, title_style)
 for i in range(2, len(datas)):
         row = 'A' + str(i)
-        worksheet.write_row(row, datas[i-1])
+        worksheet.write_row(row, datas[i-2], align)
 workbook.close()
 
