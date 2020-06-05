@@ -17,10 +17,11 @@ print(datas)
 
 workbook = xlsxwriter.Workbook(file_name + '.xlsx')
 worksheet = workbook.add_worksheet()
+date_format = workbook.add_format({'num_format':'yyyy/mm/dd hh:mm'})
+worksheet.set_column('A:A', date_format)
 for i in range(1, len(datas)):
-    for data in datas:
         row = 'A' + str(i)
-        worksheet.write_row(row, data)
+        worksheet.write_row(row, data[i-1])
         break
 workbook.close()
 
